@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<bodie>
+    <img src="img/OIP-fotor-bg-remover.jpeg" alt="logo" width="150px" height="150px">
+    <h1>Sobrancelhas</h1><br>
+    <h2>Risquinho:</h2>
+    <img src="img/imagem-de-teste.png" alt="test "width="320px" height="300px"><br>
+    <p><strong>
+        uma estética Mordena, antigamente, podia ter significados de rebeldia, mas hoje é 
+        amplamente considerado uma forma de autoexpressão e estilo
+    </p></strong>
+    <h2>Designs de sobrancelha:</h2>
+    <h3>Sobrancelhas angulares:</h3>
+    <img src="img/imagem-de-teste.png" alt="test "width="320px" height="300px"><br>
+    <p><strong>
+        destaca-se por sua curva acentuada no início e uma suavização gradual em direção às pontas. 
+        Esse formato é conhecido por proporcionar uma expressão marcante ao olhar
+    </p></strong><br>
+    <h3>Sobrancelhas angulares:</h3>
+    <img src="img/imagem-de-teste.png" alt="test "width="320px" height="300px"><br>
+    <p><strong>
+        um design mais linear e sem a curvatura acentuada, removendo o arco tradicional 
+        e alongando a cauda da sobrancelha para criar um efeito reto e moderno
+    </p></strong><br>
+</bodie>
