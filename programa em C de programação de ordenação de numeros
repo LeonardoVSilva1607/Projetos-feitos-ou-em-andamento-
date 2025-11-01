@@ -1,0 +1,202 @@
+#include <stdio.h>
+#include <stdlib.h>
+void grava(const char *arquivo1){
+    int num[5];
+    FILE *Nt;
+    Nt = fopen("numeros.txt",  "w");
+    if (Nt == NULL) {
+        printf("Erro de abri um arquivo!\n");
+        return;
+    }
+    printf("Digite 5 numeros aleatorios:\n");
+    for (int i=0; i<5; i++){
+        scanf("%d", &num[i]);
+        fprintf(Nt, "%d\n", num[i]);
+    }
+    fclose(Nt);
+}
+void ler(const char *arquivo1){
+    FILE *Nt =fopen("numeros.txt", "r");
+     if (Nt == NULL) {
+        printf("Erro de encontra o arquivo!\n");
+        return;
+    }
+    char buffer[100];
+    int num;
+    printf("\nos numeros digitados originalmente eram: \n");
+    while (fgets(buffer, sizeof(buffer), Nt) != NULL){
+        num = atoi(buffer); 
+        printf("%d ", num);
+    }
+    fclose(Nt);
+}
+void ordenar(const char *arquivo1){
+    int opcao;
+    int v[5];
+    int inicio = 0, fim = 4;
+    FILE *Nt =fopen("numeros.txt", "r");
+     if (Nt == NULL) {
+        printf("Erro de encontra o arquivo!\n");
+        return;
+    }
+    int i = 0;
+    while (i < 5 && fscanf(Nt, "%d", &v[i]) == 1) {
+        i++;
+    }
+    fclose(Nt);
+    FILE *Ot;
+    Ot = fopen("ordenados.txt",  "w");
+    printf("\nEscolha uma operacao:\n");
+    printf("1 - Bubble Sort\n");
+    printf("2 - Insertion Sort\n");
+    printf("3 - Merge Sort\n");
+    printf("4 - Quick Sort\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+    switch (opcao) {
+    case 1: 
+            int aux;
+            for (int i = 0; i < 5 - 1; i++) {
+                for (int j = 0; j < 5 - i - 1; j++) {
+                    if (v[j] > v[j + 1]) {
+                        aux = v[j];
+                        v[j] = v[j + 1];
+                        v[j + 1] = aux;
+                    }
+                }
+            }
+        for (int i=0; i<5; i++){
+            fprintf(Ot, "%d\n", v[i]);
+        }
+        fclose(Ot);
+        printf("Arquivo criado com sucesso!\n");
+    break;
+    case 2:
+    int chave;
+    for (i = 1; i < 5; i++) {
+        chave = v[i];
+        int j = i - 1;
+        while (j >= 0 && v[j] > chave) {
+            v[j + 1] = v[j];
+            j--;
+        }
+        v[j + 1] = chave;
+        }
+        for (int i=0; i<5; i++){
+            fprintf(Ot, "%d\n", v[i]);
+        }      
+        fclose(Ot);
+        printf("Arquivo criado com sucesso!\n");
+    break;
+    case 3:
+        int meio = 2;
+        int aux2[5];
+        int i = inicio, j = meio + 1, k = 0;
+        for (int a = inicio; a < meio; a++) {
+            for (int b = inicio; b < meio - (a - inicio); b++) {
+                if (v[b] > v[b + 1]) {
+                    int temp = v[b];
+                    v[b] = v[b + 1];
+                    v[b + 1] = temp;
+                }
+            }
+        }
+        for (int a = meio + 1; a < fim; a++) {
+            for (int b = meio + 1; b < fim - (a - (meio + 1)); b++) {
+                if (v[b] > v[b + 1]) {
+                    int temp = v[b];
+                    v[b] = v[b + 1];
+                    v[b + 1] = temp;
+                }
+            }
+        }
+        while (i <= meio && j <= fim) {
+            if (v[i] <= v[j]) aux2[k++] = v[i++];
+            else aux2[k++] = v[j++];
+        }
+        while (i <= meio) aux2[k++] = v[i++];
+        while (j <= fim) aux2[k++] = v[j++];
+        for (i = inicio, k = 0; i <= fim; i++, k++){
+            v[i] = aux2[k];
+        }
+       for (int i=0; i<5; i++){
+            fprintf(Ot, "%d\n", v[i]);
+        }      
+        fclose(Ot);
+        printf("Arquivo criado com sucesso!\n");
+    break;
+    case 4:
+        int pilhaInicio[10], pilhaFim[10];
+        int topo = -1;
+        pilhaInicio[++topo] = inicio;
+        pilhaFim[topo] = fim;
+        while (topo >= 0) {
+            inicio = pilhaInicio[topo];
+            fim = pilhaFim[topo--];
+            int i = inicio, j = fim;
+            int pivo = v[(inicio + fim) / 2];
+            int aux;
+            while (i <= j) {
+                while (v[i] < pivo) i++;
+                while (v[j] > pivo) j--;
+                if (i <= j) {
+                    aux = v[i];
+                    v[i] = v[j];
+                    v[j] = aux;
+                    i++;
+                    j--;
+                }
+            }
+            if (inicio < j) {
+                pilhaInicio[++topo] = inicio;
+                pilhaFim[topo] = j;
+            }
+            if (i < fim) {
+                pilhaInicio[++topo] = i;
+                pilhaFim[topo] = fim;
+            }
+        }
+      for (int i=0; i<5; i++){
+            fprintf(Ot, "%d\n", v[i]);
+        }
+        fclose(Ot);
+        printf("Arquivo criado com sucesso!\n");
+    break;
+    default:
+    printf("\nOpcao invalida. Tente novamente.\n");
+    break;
+    }
+}
+int main(){
+    const char *arquivo1 = "Numeros.txt";
+    grava(arquivo1);
+    ler(arquivo1);
+    ordenar(arquivo1);
+    char choice = 'y';
+    int num[5];
+    int concluido;
+    while((choice != 'n')){
+        printf("deseja mordificar os Numeros do arquivo ?(y/n)\n");
+        scanf(" %c", &choice);
+        if (choice == 'y') {
+            FILE *Nt =fopen("numeros.txt", "w");
+            if (Nt == NULL) {
+                printf("Erro de encontra o arquivo!\n");
+                return 1;
+            }
+            printf("Digite a nova combinação:\n");
+            for (int i=0; i<5; i++){
+                scanf("%d", &num[i]);
+                fprintf(Nt, "%d\n", num[i]);
+            }
+            fclose(Nt);
+            ordenar(arquivo1);
+        } else if (choice == 'n') {
+            printf("Operação completa\n");
+            concluido = 1;
+        } else {
+            printf("Invalid input.\n");
+        }
+    }
+    return 0;
+}
