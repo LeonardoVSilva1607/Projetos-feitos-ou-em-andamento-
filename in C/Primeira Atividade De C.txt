@@ -1,0 +1,25 @@
+#include <stdio.h>
+float areaR(float x, float y)
+{
+    return(x*y);
+}
+float areaC(float a)
+{
+    float _pi=3.14;
+    return(a*a*_pi);
+}
+
+int main()
+{
+    float Base, Altura, ac;
+    float raio;
+    printf("Digite a base do retangulo: ");
+    scanf("%f", &Base);
+    printf("Digite a Altura do retangulo: ");
+    scanf("%f", &Altura);
+    printf("Digite o raio do circulo: ");
+    scanf("%f", &raio);
+    printf("A Area do retangulo de %f e %f é: %f\n", Base, Altura, areaR(Base ,Altura));
+    printf("A Area do circulo de raio %f é: %f\n", raio, areaC(raio));
+    return 0;
+}
