@@ -1,0 +1,18 @@
+#include <stdio.h>
+void Pa (int A, int R, int N){
+    for(int i = 0; i < N; i++){
+        int soma = A + i * R;
+        printf("%dºtermo: %d\n", i + 1, soma);
+    }   
+}
+int main(){
+    int z, y, x;
+    printf("Digite o primeiro termo: ");
+    scanf("%d", &z);
+    printf("Digite a razão da PA: ");
+    scanf("%d", &y);
+    printf("Digite a quantidade de termos: ");
+    scanf("%d", &x);
+    Pa(z, y, x);
+    return 0;
+}

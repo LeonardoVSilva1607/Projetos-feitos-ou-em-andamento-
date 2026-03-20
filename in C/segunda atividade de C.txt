@@ -1,0 +1,24 @@
+int main() {
+    float temp[3][2][7], media, soma;
+    for(int i=0;i<3;i++){
+        printf("temperaturas da %d°cidade ",i + 1);
+        for(int j=0;j<2;j++){
+            printf("na %d°semana \n", j + 1);
+            for(int k=0;k<7;k++){
+                printf("%d°dia da semana: ", k + 1);
+                scanf("%f",&temp[i][j][k]);
+            }
+        }
+    }
+    for (int i=0;i<3;i++){
+        soma=0;
+        for (int j=0;j<2;j++){
+          for(int k=0;k<7;k++){
+              soma += temp[i][j][k];
+          }
+        }
+        media = soma / (2*7);
+        printf("Media de temperaturas da %d° cidade= %.2f\n",i + 1,media);
+    }
+    return 0;
+}

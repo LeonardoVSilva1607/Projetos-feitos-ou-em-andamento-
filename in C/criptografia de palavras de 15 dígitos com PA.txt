@@ -1,0 +1,39 @@
+#include <stdio.h>
+int Pa (int A, int R){
+    for(int i = 0; i < 10; i++){
+        int soma = A + i * R;
+        return soma;
+    }
+}
+int main()
+{
+    int i, j, g, shinum, soma;
+    char alfa[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'
+    ,'q','r','s','t','u','v','w','x','y','z'};
+    char shiAlf[26];
+    char palavra[15];
+    char cript[26];
+    printf("digite um shift para criptografia: \n");
+    scanf("%d", &shinum);
+    printf("digite uma palavra para criptograva: \n");
+    scanf("%s", &palavra);
+    for(i = 0; i < 26; i++){
+       shiAlf[i] = alfa[(i + shinum) % 26];
+    }
+    printf("digite um razão da PA regra(abaixo de 10): \n");
+    scanf("%d", &g);
+    Pa(g,g);
+    for(i = 0; i < 26; i++){
+       cript[i] = shiAlf[(i + soma) % 26];
+    }
+        printf("Palavra criptografada:\n");
+    for(i = 0; palavra[i] != '\0'; i++){
+        for(j = 0; j < 26; j++){
+            if(palavra[i] == alfa[j]){
+                printf("%c", shiAlf[j]);
+            }
+        }
+    }
+return 0;
+    
+}
