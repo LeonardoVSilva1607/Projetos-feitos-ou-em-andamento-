@@ -1,1 +1,0 @@
-O projeto a seguir foi feito utilizado o google AI studio para recriar o site https://qr-code-styling.com afim de compreendimento sobre prompts e AIs
